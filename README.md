@@ -42,7 +42,7 @@ Learn more at https://cap.cloud.sap/docs/get-started/.
 
 ## Creating Destination
   - Goto the BTP sub-account and navigate to the Connectivity -> Destinations
-  - Create a new Destination with Auth type as 'oAuth2UserTokenExchange' with below parameters and properties
+  - Create a new Destination with Auth type as 'oAuth2UserTokenExchange' with below parameters and properties.
     ![image](https://github.com/Boopalan020/ToApp/assets/53337900/5ab4789f-6c7c-4f68-8b37-42c0c446c32b)
   - Note : The parameters mentioned above are subject to change based on the trial account.
       1. URL -> url of the deployed cap service
