@@ -1,14 +1,40 @@
 ###
-GET http://localhost:5000/v2/todo-srv/ToDoLists
+// To get all inactive records (Draft records) from CAP service
+GET http://localhost:4004/todo-admin-srv/ToDoLists?$filter=IsActiveEntity eq false
 Content-Type: application/json
 
 ###
-POST http://localhost:4004/v2/todo-srv/ToDoLists
+// Reqeust to get one specific Draft Record - Working Fine
+GET http://localhost:4004/todo-admin-srv/ToDoLists(TaskID=6f8d7f6e-b93e-4d90-a0ba-8fa51caf6270,IsActiveEntity=false)
 Content-Type: application/json
-Authorization : Bearer eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vZDExMmVmZTl0cmlhbC5hdXRoZW50aWNhdGlvbi51czEwLmhhbmEub25kZW1hbmQuY29tL3Rva2VuX2tleXMiLCJraWQiOiJkZWZhdWx0LWp3dC1rZXktMThkZjg0ZDYzMiIsInR5cCI6IkpXVCIsImppZCI6ICJ2UjJ0RjQ0Qzl4RWg1dU9uRmZRa0k4ME5tQk5UMG1iczBsVjJMK3dLL240PSJ9.eyJqdGkiOiJhZDMyNzg3OTRhOWU0YTA3OWVkMjg1MDUxMDViMDVmNCIsImV4dF9hdHRyIjp7ImVuaGFuY2VyIjoiWFNVQUEiLCJzdWJhY2NvdW50aWQiOiJlMjA1MzU5YS1lYzc1LTQwM2EtYTk3YS1kYTU5YWJhMWIwNDMiLCJ6ZG4iOiJkMTEyZWZlOXRyaWFsIn0sInN1YiI6InNiLVRvQXBwLWQxMTJlZmU5dHJpYWwtZGV2IXQyNjUwMzEiLCJhdXRob3JpdGllcyI6WyJ1YWEucmVzb3VyY2UiXSwic2NvcGUiOlsidWFhLnJlc291cmNlIl0sImNsaWVudF9pZCI6InNiLVRvQXBwLWQxMTJlZmU5dHJpYWwtZGV2IXQyNjUwMzEiLCJjaWQiOiJzYi1Ub0FwcC1kMTEyZWZlOXRyaWFsLWRldiF0MjY1MDMxIiwiYXpwIjoic2ItVG9BcHAtZDExMmVmZTl0cmlhbC1kZXYhdDI2NTAzMSIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJyZXZfc2lnIjoiYzUwN2NhMzAiLCJpYXQiOjE3MTMyNTI1NjIsImV4cCI6MTcxMzI5NTc2MiwiaXNzIjoiaHR0cHM6Ly9kMTEyZWZlOXRyaWFsLmF1dGhlbnRpY2F0aW9uLnVzMTAuaGFuYS5vbmRlbWFuZC5jb20vb2F1dGgvdG9rZW4iLCJ6aWQiOiJlMjA1MzU5YS1lYzc1LTQwM2EtYTk3YS1kYTU5YWJhMWIwNDMiLCJhdWQiOlsidWFhIiwic2ItVG9BcHAtZDExMmVmZTl0cmlhbC1kZXYhdDI2NTAzMSJdfQ.koaWoK9KQsX4QBTn6Rga9FeMYoxo8JETG1MzbUPfPqUx1exz5EgUcQ0HpjIjm2Holqo3IZO2V9IWi7AyP5bs1RzgoKfbhIfT4VCtr1Fmyo_mA3ruagbGknXYjUAtiiX1DcvBFJS4oHU03Rqwjo8XCpqXSKe9Pt7sNbTarTvmvlkDiINqOqP3P8LMopuimq4nWjhftdy15bupDZ1xS9Fq5QK_7XuY8Og7zswzTBsCKQUojmNAtHhNwghe77c4AxOuOQDr3oaJj4elZ0Kstzv_NpI4YwBrsk5gihVqlibr5AHVcpgj3fKFmNVSrl8VvTIsCaoXLEud-VEeH8EFmmNaJw
+
+###
+// Request to call the Entity Bound Action/Function import to activate the inactive record
+POST http://localhost:4004/todo-admin-srv/ToDoLists(TaskID=2bff697c-e43c-47be-b114-72eb6b1234c0,IsActiveEntity=false)/AdminServices.draftActivate
+Content-Type: application/json
+
+{}
+
+###  
+// To call UnBound Action/Function import from the CAP Service - Working Fine
+POST http://localhost:4004/v2/todo-admin-srv/aCalculate_Estimation()      
+Content-Type: application/json  
+
+{}
+
+###
+// To send a POST call to the CAP Service - Working Fine
+POST http://localhost:4004/todo-admin-srv/ToDoLists
+Content-Type: application/json
 
 {
-    "TaskDescription" : "New Task Description",
-    "TargetDate"      : "2024-03-29",
-    "Status"          : "Pending"
+    "TaskDescription": "Task Description new 5555",
+    "TargetDate": "2024-09-10",
+    "Status": "Pending",
+    "Priority": "4"
 }
+
+###
+// To do a GET call to the CAP Service - Working Fine
+GET http://localhost:4004/todo-admin-srv/ToDoLists
+Content-Type: application/json

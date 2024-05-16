@@ -11,4 +11,3 @@ entity ToDoLists : managed, localAspects {
     Status          : String(15);
     Priority        : String(15) default 'Medium';
 };
-

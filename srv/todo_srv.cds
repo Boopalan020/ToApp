@@ -6,11 +6,14 @@ service AdminServices
 @(requires: 'authenticated-user')
 @(impl: '/srv/handlers/todoHandler.js') {
 
+    type object {}
+    action aCalculate_Estimation() returns array of object;
+
     @requires: 'Admin'
     @restrict: [{
         grant: ['READ', 'WRITE'],
     }]
-    entity ToDoLists as projection on datamodel.ToDoLists { * } excluding { DELETED } where DELETED = false;
+    entity ToDoLists @(odata.draft.enabled) @(odata.draft.bypass) as projection on datamodel.ToDoLists { * } excluding { DELETED } where DELETED = false;
 
 }
 

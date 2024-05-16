@@ -41,6 +41,10 @@ module.exports = class MyCatalogServices extends cds.ApplicationService {
         this.before("READ", "ToDoLists", async (req) => {
             console.log("For validating the inputs ")
         })
+
+        this.on("aCalculate_Estimation", async () => {
+            console.log("Custom action is called and triggered!!!");
+        })
         return super.init()
     }
   }
