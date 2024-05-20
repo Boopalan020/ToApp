@@ -1,5 +1,15 @@
 using {db.datamodel} from '../db/ToAppModel';
 
+// Service Exposure for External service entity projection
+service Suppliers
+@(path: '/ExternalService')
+@(requires: 'authenticated-user')
+@(impl: '/srv/handlers/ExternalService.js')
+{
+    @readonly
+    entity Suppliers as projection on datamodel.Suppliers;
+}
+
 // service for Admin role
 service AdminServices 
 @(path: '/todo-admin-srv')
@@ -33,4 +43,8 @@ service CustomerServices
         Status,
         Priority
     } where DELETED = false;
+}
+
+service MediaHanding_Service {
+    entity MediaHandling as projection on datamodel.Pictures;    
 }
