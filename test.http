@@ -51,41 +51,41 @@ Content-Type: application/json
 //--------------------------------------------------------------- Media handling - Endpoint Testing Start ---------------------------------------
 
 ###
-// To get the list of media reccords
+// To get the list of media records
 GET http://localhost:4004/odata/v4/media-handing-/MediaHandling
 Content-Type: application/json
 
 ###
 // To get data of a specific data
-GET http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c1)
+GET http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c6)
 Content-Type: application/json
 
 ###
 // To get the content (file data) of the specific record
-GET http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c1)/content
+GET http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c6)/content
 Content-Type: application/json
 
 ### Create Picture PNG
-// To create a record for 
+// To create a record to hold the file in the database
 POST http://localhost:4004/odata/v4/media-handing-/MediaHandling
 Accept: application/json
 Content-Type: application/json
 
 { 
-  "ID": "2bff697c-e43c-47be-b114-72eb6b1234c3",
+  "ID": "2bff697c-e43c-47be-b114-72eb6b1234c6",
   "mediatype": "image/png"
 }
 
 ### Upload Binary PNG
 // To upload the "Test.png" file to the database to the specific ID
-PUT http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c1)/content
+PUT http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c6)/content
 Content-Type: image/png
 
-< ./Test.png
+< ./Photo.png
 
 ###  Delete Image
 // To delete the image file form the Database
-DELETE http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c1)
+DELETE http://localhost:4004/odata/v4/media-handing-/MediaHandling(2bff697c-e43c-47be-b114-72eb6b1234c6)
 Content-Type: image/png
 
 //--------------------------------------------------------------- Media handling - Endpoint Testing End  ---------------------------------------
