@@ -1,5 +1,10 @@
 ###
 // To get all inactive records (Draft records) from CAP service
+GET http://localhost:4004/todo-admin-srv/ToDoLists
+Content-Type: application/json
+
+###
+// To get all inactive records (Draft records) from CAP service
 GET http://localhost:4004/todo-admin-srv/ToDoLists?$filter=IsActiveEntity eq false
 Content-Type: application/json
 
@@ -15,6 +20,18 @@ Content-Type: application/json
 
 {}
 
+###
+// Post request to ToDoLists
+POST http://localhost:4004/todo-admin-srv/ToDoLists
+Content-Type: application/json
+
+{
+  "TaskDescription": "Task Description new 11_12",
+  "TargetDate": "2024-09-10",
+  "Status": "Pending",
+  "Priority": "4"
+}
+
 ###  
 // To call UnBound Action/Function import from the CAP Service - Working Fine
 POST http://localhost:4004/v2/todo-admin-srv/aCalculate_Estimation()      
@@ -28,7 +45,7 @@ POST http://localhost:4004/todo-admin-srv/ToDoLists
 Content-Type: application/json
 
 {
-    "TaskDescription": "Task Description new 5555",
+    "TaskDescription": "Task Description new 12",
     "TargetDate": "2024-09-10",
     "Status": "Pending",
     "Priority": "4"

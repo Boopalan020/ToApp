@@ -13,16 +13,16 @@ service Suppliers
 // service for Admin role
 service AdminServices 
 @(path: '/todo-admin-srv')
-@(requires: 'authenticated-user')
+// @(requires: 'authenticated-user')
 @(impl: '/srv/handlers/todoHandler.js') {
 
     type object {}
     action aCalculate_Estimation() returns array of object;
 
-    @requires: 'Admin'
-    @restrict: [{
-        grant: ['READ', 'WRITE'],
-    }]
+    // @requires: 'Admin'
+    // @restrict: [{
+    //     grant: ['READ', 'WRITE'],
+    // }]
     entity ToDoLists @(odata.draft.enabled) @(odata.draft.bypass) as projection on datamodel.ToDoLists { * } excluding { DELETED } where DELETED = false;
 
 }
