@@ -78,7 +78,7 @@ module.exports = class MyCatalogServices extends cds.ApplicationService {
             //
             // ***********************************   End of RETRIEVE ONLY FEW FIELDS ********************************************
             console.log(result);
-            return result;
+            return next;
         });
 
         this.after("GET", "ToDoLists", async (data) => {
